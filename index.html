@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Luist0r | Portfolio</title>
+
   <meta
     name="description"
     content="Arquitectura de flujo, capital y decisiones estratégicas."
@@ -20,26 +21,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 
   <style>
     :root {
       --bg: #0b1220;
-      --bg-2: #0f172a;
-      --panel: #161f33;
-      --panel-2: #1b2640;
-      --border: #2b3550;
+      --bg-2: #10192d;
+      --panel: #172238;
+      --panel-2: #1d2944;
+      --panel-3: #121c31;
+      --border: #2d3a57;
       --text: #f4efe6;
-      --muted: #b7c0d4;
-      --soft: #8f9ab2;
+      --muted: #bcc5d8;
+      --soft: #94a0ba;
       --accent: #d8b36a;
-      --accent-hover: #e3c27f;
-      --dark: #161616;
-      --white-04: rgba(255, 255, 255, 0.04);
-      --white-06: rgba(255, 255, 255, 0.06);
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+      --accent-hover: #e4c27d;
+      --accent-dark: #1c1a17;
+      --line: rgba(255, 255, 255, 0.06);
+      --glass: rgba(255, 255, 255, 0.03);
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
       --radius-xl: 32px;
       --radius-lg: 24px;
       --radius-md: 18px;
@@ -60,14 +62,19 @@
       font-family: "Inter", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top, rgba(216, 179, 106, 0.08), transparent 25%),
+        radial-gradient(circle at top, rgba(216, 179, 106, 0.08), transparent 24%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       line-height: 1.6;
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
     }
 
     .container {
@@ -78,27 +85,27 @@
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 50;
       backdrop-filter: blur(14px);
       background: rgba(11, 18, 32, 0.72);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid var(--line);
     }
 
     .nav {
+      min-height: 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 78px;
-      gap: 20px;
+      gap: 18px;
     }
 
     .brand {
       display: inline-flex;
       flex-direction: column;
-      line-height: 0.88;
       font-family: "Playfair Display", serif;
       font-size: 1.5rem;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.05em;
+      line-height: 0.88;
     }
 
     .nav-links {
@@ -122,18 +129,18 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 54px;
-      padding: 0 24px;
+      min-height: 56px;
+      padding: 0 26px;
       border-radius: 999px;
       font-size: 0.98rem;
       font-weight: 600;
+      white-space: nowrap;
       transition:
         transform 0.2s ease,
         background-color 0.2s ease,
         border-color 0.2s ease,
         color 0.2s ease,
         box-shadow 0.2s ease;
-      white-space: nowrap;
     }
 
     .btn:hover {
@@ -142,7 +149,7 @@
 
     .btn-primary {
       background: var(--accent);
-      color: var(--dark);
+      color: var(--accent-dark);
       border: 1px solid var(--accent);
       box-shadow: 0 10px 28px rgba(216, 179, 106, 0.22);
     }
@@ -155,23 +162,16 @@
     .btn-secondary {
       background: transparent;
       color: var(--text);
-      border: 1px solid #41506f;
+      border: 1px solid #455474;
     }
 
     .btn-secondary:hover {
-      background: var(--white-04);
-      border-color: #5a6a8c;
+      background: rgba(255, 255, 255, 0.04);
+      border-color: #607194;
     }
 
-    .hero {
-      padding: 92px 0 54px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 34px;
-      align-items: end;
+    .section {
+      padding: 38px 0;
     }
 
     .eyebrow {
@@ -180,61 +180,150 @@
       text-transform: uppercase;
       letter-spacing: 0.14em;
       font-size: 0.82rem;
-      font-weight: 600;
-      margin-bottom: 18px;
-    }
-
-    .hero h1 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(3.4rem, 8vw, 7.2rem);
-      line-height: 0.9;
-      letter-spacing: -0.05em;
-      margin-bottom: 22px;
-      max-width: 780px;
-    }
-
-    .hero p {
-      font-size: 1.15rem;
-      color: var(--muted);
-      max-width: 680px;
-    }
-
-    .hero-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
-      border: 1px solid var(--white-06);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-card p {
-      font-size: 0.96rem;
-      color: var(--soft);
-      margin-bottom: 14px;
-    }
-
-    .hero-card strong {
-      color: var(--text);
-      display: block;
-      font-size: 1.08rem;
-      margin-bottom: 10px;
-    }
-
-    .section {
-      padding: 30px 0 36px;
+      font-weight: 700;
+      margin-bottom: 16px;
     }
 
     .section-title {
       font-family: "Playfair Display", serif;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2rem, 4vw, 3.2rem);
       line-height: 1;
+      letter-spacing: -0.04em;
       margin-bottom: 14px;
     }
 
     .section-intro {
       color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 28px;
+      font-size: 1.03rem;
+    }
+
+    .hero {
+      padding: 92px 0 54px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: end;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(3.2rem, 8vw, 7rem);
+      line-height: 0.9;
+      letter-spacing: -0.055em;
+      margin-bottom: 22px;
+      max-width: 830px;
+    }
+
+    .hero p {
       max-width: 720px;
-      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 1.14rem;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card .mini-label {
+      display: inline-block;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .hero-card h3 {
+      font-size: 1.16rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .hero-card p {
+      color: var(--soft);
+      font-size: 0.98rem;
+      margin: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .stat {
+      background: linear-gradient(180deg, rgba(23,34,56,0.95), rgba(18,28,46,0.95));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      color: var(--soft);
+      font-size: 0.95rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, var(--panel) 0%, var(--panel-3) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel h3 {
+      font-size: 1.12rem;
+      margin-bottom: 12px;
+    }
+
+    .panel p {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .list div {
+      color: var(--muted);
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      font-size: 0.96rem;
     }
 
     .services-grid {
@@ -244,7 +333,7 @@
     }
 
     .service-card {
-      background: linear-gradient(180deg, rgba(22,31,51,0.98), rgba(18,26,44,0.98));
+      background: linear-gradient(180deg, rgba(24,35,58,0.98), rgba(18,28,46,0.98));
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 26px;
@@ -259,13 +348,12 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       margin-bottom: 14px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .service-card h3 {
       font-size: 1.16rem;
       margin-bottom: 12px;
-      color: var(--text);
     }
 
     .service-card p {
@@ -273,8 +361,46 @@
       font-size: 0.98rem;
     }
 
+    .process-grid,
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .process-card,
+    .project-card {
+      background: linear-gradient(180deg, rgba(23,34,56,0.95), rgba(17,26,43,0.95));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .process-card strong,
+    .project-card strong {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .process-card h3,
+    .project-card h3 {
+      font-size: 1.14rem;
+      margin-bottom: 10px;
+    }
+
+    .process-card p,
+    .project-card p {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
     .contact {
-      padding: 48px 0 82px;
+      padding: 46px 0 82px;
     }
 
     .contact-box {
@@ -329,11 +455,11 @@
       gap: 16px;
       flex-wrap: wrap;
       justify-content: flex-end;
-      min-width: 290px;
+      min-width: 300px;
     }
 
     .footer {
-      padding: 0 0 44px;
+      padding: 0 0 42px;
     }
 
     .footer-inner {
@@ -341,11 +467,11 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      border-top: 1px solid var(--white-06);
+      flex-wrap: wrap;
+      border-top: 1px solid var(--line);
       padding-top: 22px;
       color: var(--soft);
       font-size: 0.95rem;
-      flex-wrap: wrap;
     }
 
     .socials {
@@ -360,18 +486,18 @@
 
     @media (max-width: 980px) {
       .hero-grid,
-      .services-grid,
-      .contact-box {
+      .about-grid,
+      .process-grid,
+      .projects-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-grid {
-        display: grid;
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .services-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+      .stats {
+        grid-template-columns: 1fr;
       }
 
       .contact-box {
@@ -387,9 +513,9 @@
 
     @media (max-width: 640px) {
       .nav {
+        flex-direction: column;
         align-items: flex-start;
         padding: 16px 0;
-        flex-direction: column;
       }
 
       .hero {
@@ -404,11 +530,7 @@
         grid-template-columns: 1fr;
       }
 
-      .contact-box {
-        padding: 34px 22px;
-        border-radius: 24px;
-      }
-
+      .hero-actions,
       .contact-actions {
         width: 100%;
         flex-direction: column;
@@ -416,6 +538,11 @@
 
       .btn {
         width: 100%;
+      }
+
+      .contact-box {
+        padding: 34px 22px;
+        border-radius: 24px;
       }
     }
   </style>
@@ -429,9 +556,19 @@
       </a>
 
       <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#sobre">Sobre mí</a>
         <a href="#servicios">Servicios</a>
-        <a href="#contacto">Contacto</a>
-        <a class="btn btn-primary" href="#contacto">Agendar ahora</a>
+        <a href="#metodo">Método</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="https://heydrop.me/luist0r" target="_blank" rel="noopener noreferrer">Contacto</a>
+        <a
+          class="btn btn-primary"
+          href="https://heydrop.me/luist0r"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Agendar ahora
+        </a>
       </nav>
     </div>
   </header>
@@ -446,21 +583,95 @@
             Diseño estructuras de flujo, capital y criterio de decisión para personas
             y proyectos que necesitan más orden, menos fricción y mejor timing.
           </p>
+
+          <div class="hero-actions">
+            <a
+              class="btn btn-primary"
+              href="https://heydrop.me/luist0r"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Agendar ahora
+            </a>
+
+            <a class="btn btn-secondary" href="mailto:hell@luistor.uk">
+              Enviar email
+            </a>
+          </div>
         </div>
 
         <aside class="hero-card">
-          <p>Enfoque</p>
-          <strong>Diagnóstico, estructura y ejecución.</strong>
+          <span class="mini-label">Enfoque</span>
+          <h3>Diagnóstico, estructura y ejecución.</h3>
           <p>
             Del punto cero al escalamiento: revisamos bloqueos, fugas,
             prioridades y decisiones con impacto real.
           </p>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>Flujo</strong>
+              <span>Orden de entradas, salidas y prioridades.</span>
+            </div>
+
+            <div class="stat">
+              <strong>Capital</strong>
+              <span>Protección, asignación y expansión.</span>
+            </div>
+
+            <div class="stat">
+              <strong>Decisión</strong>
+              <span>Criterio práctico para actuar con timing.</span>
+            </div>
+          </div>
         </aside>
+      </div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="container">
+        <span class="eyebrow">— Sobre mí</span>
+        <h2 class="section-title">Trabajo sobre estructura, no sobre ruido.</h2>
+        <p class="section-intro">
+          Mi trabajo consiste en convertir complejidad financiera y estratégica
+          en sistemas más legibles, ejecutables y sostenibles.
+        </p>
+
+        <div class="about-grid">
+          <article class="panel">
+            <h3>Qué construyo</h3>
+            <p>
+              Diseños de flujo, arquitectura de capital y marcos de decisión
+              para contextos donde el crecimiento exige más claridad.
+            </p>
+
+            <div class="list">
+              <div>Más foco sobre el punto de mayor impacto.</div>
+              <div>Menos fuga de recursos y menos decisiones reactivas.</div>
+              <div>Mayor coherencia entre visión, caja y ejecución.</div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <h3>Cómo pienso</h3>
+            <p>
+              Combino lectura estratégica, criterio financiero y diseño de sistemas
+              para traducir ambición en decisiones útiles.
+            </p>
+
+            <div class="list">
+              <div>Diagnóstico del punto cero.</div>
+              <div>Secuencia clara de prioridades.</div>
+              <div>Diseño de siguientes movimientos con lógica de capital.</div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
     <section class="section" id="servicios">
       <div class="container">
+        <span class="eyebrow">— Servicios</span>
         <h2 class="section-title">Áreas de trabajo</h2>
         <p class="section-intro">
           Un marco de acompañamiento orientado a ordenar recursos, reducir errores costosos
@@ -507,6 +718,85 @@
       </div>
     </section>
 
+    <section class="section" id="metodo">
+      <div class="container">
+        <span class="eyebrow">— Método</span>
+        <h2 class="section-title">Un proceso breve y preciso.</h2>
+        <p class="section-intro">
+          La lógica es simple: entender el punto actual, ordenar variables críticas
+          y definir acciones con impacto medible.
+        </p>
+
+        <div class="process-grid">
+          <article class="process-card">
+            <strong>Paso 01</strong>
+            <h3>Diagnóstico</h3>
+            <p>
+              Identificamos fugas, fricciones, prioridades y restricciones
+              para entender dónde se está perdiendo valor.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <strong>Paso 02</strong>
+            <h3>Estructura</h3>
+            <p>
+              Reordenamos flujo, decisiones y criterios de asignación
+              para dar estabilidad al sistema.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <strong>Paso 03</strong>
+            <h3>Ejecución</h3>
+            <p>
+              Traducimos claridad en movimientos concretos, con secuencia,
+              seguimiento y capacidad de ajuste.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proyectos">
+      <div class="container">
+        <span class="eyebrow">— Proyectos</span>
+        <h2 class="section-title">Tipos de intervención</h2>
+        <p class="section-intro">
+          Estos son algunos formatos típicos en los que este trabajo genera valor.
+        </p>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <strong>Operación</strong>
+            <h3>Reordenar una estructura personal o profesional</h3>
+            <p>
+              Cuando hay ingresos, oportunidades y presión, pero falta un sistema
+              claro para decidir sin desgaste.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <strong>Expansión</strong>
+            <h3>Preparar una etapa de crecimiento</h3>
+            <p>
+              Ideal para momentos donde el siguiente nivel exige más precisión
+              en caja, riesgo y asignación de recursos.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <strong>Corrección</strong>
+            <h3>Resolver desorden antes de escalar</h3>
+            <p>
+              Útil cuando el contexto ya muestra fugas, decisiones tardías
+              o crecimiento mal soportado.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="contact" id="contacto">
       <div class="container">
         <div class="contact-box">
@@ -520,10 +810,19 @@
           </div>
 
           <div class="contact-actions">
-            <a class="btn btn-primary" href="mailto:hell@luistor.uk?subject=Agenda%20inicial">
+            <a
+              class="btn btn-primary"
+              href="https://heydrop.me/luist0r"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Agendar ahora
             </a>
-            <a class="btn btn-secondary" href="mailto:hell@luistor.uk">
+
+            <a
+              class="btn btn-secondary"
+              href="mailto:hell@luistor.uk"
+            >
               Enviar email
             </a>
           </div>
@@ -537,6 +836,13 @@
       <span>© 2026 Luist0r. Todos los derechos reservados.</span>
 
       <div class="socials">
-        <a href="https://instagram.com/luist0r" target="_blank" rel="noreferrer">Instagram</a>
-        <a href="https://x.com/luist0r" target="_blank" rel="noreferrer">X (Twitter)</a>
-        <a href="mailto
+        <a href="#sobre">Sobre mí</a>
+        <a href="#servicios">Servicios</a>
+        <a href="https://instagram.com/luist0r" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://x.com/luist0r" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
+        <a href="mailto:hell@luistor.uk">hell@luistor.uk</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
