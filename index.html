@@ -1,112 +1,812 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luist0r | Portfolio</title>
-    <meta name="description" content="Personal portfolio landing page for Luist0r.">
-    <meta property="og:title" content="Luist0r | Portfolio">
-    <meta property="og:description" content="Arquitectura de Flujo, Capital y Decisiones Estratégicas.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://luist0r.com">
-    <meta property="og:image" content="https://luist0r.com/assets/og-image.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luis T0r | Diagnóstico y Estructura Financiera Estratégica</title>
+  <meta
+    name="description"
+    content="Diagnóstico, estructura financiera y decisiones estratégicas para personas y negocios que necesitan mayor claridad, control y dirección."
+  />
+  <meta property="og:title" content="Luis T0r | Diagnóstico y Estructura Financiera Estratégica" />
+  <meta
+    property="og:description"
+    content="Arquitectura de flujo, capital y decisiones estratégicas."
+  />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #10182d;
+      --panel: rgba(255, 255, 255, 0.04);
+      --text: #eef2ff;
+      --muted: #a8b3cf;
+      --line: rgba(255, 255, 255, 0.1);
+      --gold: #c6a86a;
+      --gold-soft: rgba(198, 168, 106, 0.14);
+      --blue: #7f95d1;
+      --max: 1200px;
+      --radius: 22px;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(127, 149, 209, 0.12), transparent 28%),
+        radial-gradient(circle at left center, rgba(198, 168, 106, 0.10), transparent 30%),
+        linear-gradient(180deg, #08101f 0%, #0b1020 55%, #0f1730 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .section { padding: 88px 0; position: relative; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 18px;
+      line-height: 1.06;
+    }
+
+    h1, h2 {
+      font-family: "Playfair Display", serif;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 5.6rem);
+      max-width: 10.5ch;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4.2vw, 3.2rem);
+      max-width: 12ch;
+    }
+
+    h3 {
+      font-size: 1.08rem;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      max-width: 60ch;
+    }
+
+    .small { font-size: 0.95rem; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: rgba(8, 12, 25, 0.72);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .topbar-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      flex-direction: column;
+      line-height: 0.9;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-transform: uppercase;
+    }
+
+    .brand span:last-child { color: var(--gold); }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color 0.25s ease;
+    }
+
+    .nav a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #d1b57d 0%, #b9934d 100%);
+      color: #0b1020;
+      box-shadow: 0 12px 34px rgba(198, 168, 106, 0.22);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.02);
+      border-color: rgba(255, 255, 255, 0.12);
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 84px 0 72px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero-copy p { margin-top: 18px; }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .hero-trust {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .trust-card {
+      padding: 18px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .trust-card strong {
+      display: block;
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .hero-panel {
+      position: relative;
+      padding: 28px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03)),
+        rgba(8, 12, 25, 0.78);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-kicker {
+      font-size: 0.78rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 18px;
+    }
+
+    .panel-heading {
+      font-size: 1.4rem;
+      color: var(--text);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .panel-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .panel-item {
+      padding: 16px 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
+    .panel-item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--text);
+      font-size: 0.96rem;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .cards-3 {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      min-height: 240px;
+      box-shadow: var(--shadow);
+    }
+
+    .card .index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: var(--gold);
+      background: var(--gold-soft);
+      border: 1px solid rgba(198, 168, 106, 0.28);
+      margin-bottom: 18px;
+    }
+
+    .card p { margin-bottom: 18px; }
+
+    .card a {
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .card a:hover { color: var(--gold); }
+
+    .client-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .client-chip {
+      padding: 18px;
+      text-align: center;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .method {
+      display: grid;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .method-step {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 18px;
+      padding: 22px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .method-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 74px;
+      border-radius: 16px;
+      background: rgba(127, 149, 209, 0.12);
+      color: #cfd9f5;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .insight-tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      border: 1px solid rgba(198, 168, 106, 0.22);
+      background: rgba(198, 168, 106, 0.08);
+      margin-bottom: 16px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .quote-box,
+    .about-box {
+      padding: 30px;
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .quote-box blockquote {
+      margin: 0;
+      font-size: clamp(1.3rem, 2vw, 2rem);
+      line-height: 1.32;
+      color: var(--text);
+      font-family: "Playfair Display", serif;
+    }
+
+    .cta-panel {
+      padding: 34px;
+      border-radius: 30px;
+      border: 1px solid rgba(198, 168, 106, 0.18);
+      background:
+        radial-gradient(circle at top right, rgba(198, 168, 106, 0.12), transparent 25%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .footer {
+      padding: 28px 0 42px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .section-head,
+      .about-grid,
+      .cta-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .cards-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .client-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner {
+        align-items: flex-start;
+        padding: 18px 0;
+      }
+
+      .nav { gap: 14px; }
+      .hero { padding-top: 56px; }
+
+      .hero-trust,
+      .cards-3,
+      .client-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .method-step {
+        grid-template-columns: 1fr;
+      }
+
+      .card,
+      .quote-box,
+      .about-box,
+      .hero-panel,
+      .cta-panel {
+        padding: 22px;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="mandala-layer" id="mandala-layer">
-        <!-- Geometric Mandala SVG (8-Pointed Star / Octagram Pattern) -->
-        <svg viewBox="0 0 100 100" class="mandala-svg">
-            <g transform="translate(50,50)">
-                <!-- 8 Rhombuses forming the central star -->
-                <g class="mandala-group">
-                    <path d="M0 0 L10 -25 L20 0 L10 25 Z" class="mandala-diamond"
-                        transform="rotate(0) translate(0, -10)" />
-                    <path d="M0 0 L10 -25 L20 0 L10 25 Z" class="mandala-diamond"
-                        transform="rotate(45) translate(0, -10)" />
-                    <path d="M0 0 L10 -25 L20 0 L10 25 Z" class="mandala-diamond"
-                        transform="rotate(90) translate(0, -10)" />
-                    <path d="M0 0 L10 -25 L20 0 L10 25 Z" class="mandala-diamond"
-                        transform="rotate(135) translate(0, -10)" />
-                    <path d="M0 0 L10 -25 L20 0 L10 25 Z" class="mandala-diamond"
-                        transform="rotate(180) translate(0, -10)" />
-                    <path d="M0 0 L10 -25 L20 0 L10 25 Z" class="mandala-diamond"
-                        transform="rotate(225) translate(0, -10)" />
-                    <path d="M0 0 L10 -25 L20 0 L10 25 Z" class="mandala-diamond"
-                        transform="rotate(270) translate(0, -10)" />
-                    <path d="M0 0 L10 -25 L20 0 L10 25 Z" class="mandala-diamond"
-                        transform="rotate(315) translate(0, -10)" />
-                </g>
-                <!-- Outer connecting lines -->
-                <circle cx="0" cy="0" r="38" class="mandala-ring" fill="none" opacity="0.5" />
-                <path d="M0 -38 L27 -27 L38 0 L27 27 L0 38 L-27 27 L-38 0 L-27 -27 Z" class="mandala-hex" fill="none" />
-            </g>
-        </svg>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#inicio" class="brand" aria-label="Inicio Luis T0r">
+        <span>Luis</span>
+        <span>T0r</span>
+      </a>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#clientes">A quién ayudo</a>
+        <a href="#metodo">Método</a>
+        <a href="#insights">Insights</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#contacto" class="btn btn-secondary">Contacto</a>
+      </nav>
     </div>
-    <main class="hero" id="hero" aria-label="Luist0r portfolio landing">
-        <div class="layer layer-alt" id="layer-alt" aria-hidden="true"></div>
-        <div class="layer layer-dissolve" aria-hidden="true"></div>
-        <div class="layer layer-main" aria-hidden="true"></div>
-        <div class="grid-overlay" id="grid-overlay" aria-hidden="true"></div>
-        <div class="echo-layer" id="echo-layer" aria-hidden="true"></div>
-        <div class="cursor-spot" id="cursor-spot" aria-hidden="true"></div>
-        <header class="top-bar">
-            <div class="top-bar-content">
-                <h1 class="name-mark">
-                    <span>Luis</span>
-                    <span>T0r</span>
-                </h1>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Diagnóstico y estructura financiera</div>
+          <h1>Arquitectura de flujo, capital y decisiones</h1>
+          <p class="lead">
+            Diseño estructuras financieras más claras para personas y negocios que necesitan ordenar
+            prioridades, reducir fricción y convertir incertidumbre en decisiones ejecutables.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contacto" class="btn btn-primary">Agendar diagnóstico</a>
+            <a href="#servicios" class="btn btn-secondary">Explorar servicios</a>
+          </div>
+
+          <div class="hero-trust">
+            <div class="trust-card">
+              <strong>Diagnóstico real</strong>
+              <p class="small">Claridad sobre fugas, bloqueos, riesgos y prioridades.</p>
             </div>
-            <div class="contact-btn-wrapper">
-                <a href="https://heydrop.me/luist0r" target="_blank" rel="noopener noreferrer"
-                    class="records-link">Contacto</a>
+            <div class="trust-card">
+              <strong>Estructura accionable</strong>
+              <p class="small">Del análisis al diseño concreto de flujo y capital.</p>
             </div>
-        </header>
-        <section class="services-orbit" aria-label="Servicios">
-            <article class="service-item service-1">
-                <h2>Flujo Sostenible</h2>
-                <p>Construcción de ingresos reales desde tu contexto actual.</p>
-            </article>
-            <article class="service-item service-2">
-                <h2>Decisiones Estratégicas</h2>
-                <p>Orden económico y profesional con criterio y timing.</p>
-            </article>
-            <article class="service-item service-3">
-                <h2>Arquitectura de Capital</h2>
-                <p>Estructuras de consumo, protección y expansión.</p>
-            </article>
-            <article class="service-item service-4">
-                <h2>Diagnóstico Punto Cero</h2>
-                <p>Claridad total de bloqueos, fugas y prioridades.</p>
-            </article>
-            <article class="service-item service-5">
-                <h2>Escalamiento</h2>
-                <p>Menos errores costosos y mayor control financiero.</p>
-            </article>
-            <article class="service-item service-6">
-                <h2>Revisión Continua</h2>
-                <p>Ajustes periódicos según mercado y momento vital.</p>
-            </article>
-        </section>
-        <div class="social-links" aria-label="Social links">
-            <a href="https://instagram.com/luist0r" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                    <path
-                        d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Zm5.5-2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z" />
-                </svg>
-            </a>
-            <a href="https://x.com/luist0r" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                    <path
-                        d="M18.9 2H22l-6.78 7.73L23 22h-6.1l-4.77-6.78L6.2 22H3.1l7.24-8.28L1 2h6.2l4.31 6.17L18.9 2Zm-1.07 18h1.69L6.31 3.9H4.5L17.83 20Z" />
-                </svg>
-            </a>
+            <div class="trust-card">
+              <strong>Acompañamiento estratégico</strong>
+              <p class="small">Revisión y ajuste según contexto, etapa y decisiones.</p>
+            </div>
+          </div>
         </div>
-    </main>
-    <script src="js/script.js"></script>
+
+        <aside class="hero-panel" aria-label="Resumen ejecutivo">
+          <div class="panel-kicker">Resumen ejecutivo</div>
+          <div class="panel-heading">¿Qué parte de tu estructura necesita orden hoy?</div>
+          <p>
+            Esta firma está diseñada para trabajar donde normalmente aparece la fricción:
+            liquidez dispersa, decisiones sin marco, capital mal priorizado o crecimiento sin estructura.
+          </p>
+
+          <div class="panel-list">
+            <div class="panel-item">
+              <strong>Flujo</strong>
+              Ingresos, liquidez, previsión y prioridades operativas.
+            </div>
+            <div class="panel-item">
+              <strong>Capital</strong>
+              Protección, distribución, expansión y criterio de asignación.
+            </div>
+            <div class="panel-item">
+              <strong>Decisión</strong>
+              Timing, foco, marco de acción y menor costo por error.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Soluciones</div>
+            <h2>Servicios estructurados para decisiones más claras</h2>
+          </div>
+          <p class="lead">
+            Cada servicio responde a una etapa concreta: entender el punto de partida, diseñar la estructura adecuada,
+            ejecutar con criterio y revisar con continuidad.
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <article class="card">
+            <div class="index">01</div>
+            <h3>Diagnóstico Punto Cero</h3>
+            <p>Evaluación inicial para detectar fugas, bloqueos, desorden financiero y prioridades mal alineadas.</p>
+            <a href="#contacto">Solicitar diagnóstico →</a>
+          </article>
+
+          <article class="card">
+            <div class="index">02</div>
+            <h3>Arquitectura de Flujo</h3>
+            <p>Reorganización de ingresos, liquidez y capacidad operativa para sostener decisiones con más control.</p>
+            <a href="#contacto">Ver enfoque →</a>
+          </article>
+
+          <article class="card">
+            <div class="index">03</div>
+            <h3>Estructura de Capital</h3>
+            <p>Diseño de criterios para proteger, asignar y expandir capital sin comprometer estabilidad ni dirección.</p>
+            <a href="#contacto">Explorar servicio →</a>
+          </article>
+
+          <article class="card">
+            <div class="index">04</div>
+            <h3>Decisiones Estratégicas</h3>
+            <p>Ordenamiento de decisiones clave mediante contexto, timing, visibilidad y marco de prioridad.</p>
+            <a href="#contacto">Solicitar sesión →</a>
+          </article>
+
+          <article class="card">
+            <div class="index">05</div>
+            <h3>Escalamiento</h3>
+            <p>Ajuste de estructura para crecer con menos errores costosos, más lectura financiera y mejor ejecución.</p>
+            <a href="#contacto">Revisar opciones →</a>
+          </article>
+
+          <article class="card">
+            <div class="index">06</div>
+            <h3>Revisión Continua</h3>
+            <p>Seguimiento periódico para adaptar estructura y decisiones a nuevos escenarios, riesgos y objetivos.</p>
+            <a href="#contacto">Agendar revisión →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="clientes">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">A quién ayudo</div>
+            <h2>Trabajo con perfiles que necesitan más estructura que ruido</h2>
+          </div>
+          <p class="lead">
+            La propuesta está orientada a quienes ya generan, ya operan o ya están creciendo,
+            pero necesitan convertir complejidad en un sistema más claro.
+          </p>
+        </div>
+
+        <div class="client-strip">
+          <div class="client-chip">Profesionales independientes</div>
+          <div class="client-chip">Emprendedores y fundadores</div>
+          <div class="client-chip">Negocios en crecimiento</div>
+          <div class="client-chip">Operadores con decisiones de capital</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="metodo">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Método</div>
+            <h2>Un proceso claro para pasar de intuición a estructura</h2>
+          </div>
+          <p class="lead">
+            La metodología traduce observación y estrategia en una secuencia lógica de diagnóstico,
+            diseño, implementación y revisión.
+          </p>
+        </div>
+
+        <div class="method">
+          <article class="method-step">
+            <div class="method-num">01</div>
+            <div>
+              <h3>Contexto</h3>
+              <p>Entendemos situación actual, restricciones, objetivos, capacidad de ejecución y momento financiero.</p>
+            </div>
+          </article>
+
+          <article class="method-step">
+            <div class="method-num">02</div>
+            <div>
+              <h3>Diagnóstico</h3>
+              <p>Identificamos fricción, fugas, zonas de desorden, exposición y oportunidades prioritarias.</p>
+            </div>
+          </article>
+
+          <article class="method-step">
+            <div class="method-num">03</div>
+            <div>
+              <h3>Diseño</h3>
+              <p>Construimos una estructura de flujo, capital y decisión con criterios claros y foco práctico.</p>
+            </div>
+          </article>
+
+          <article class="method-step">
+            <div class="method-num">04</div>
+            <div>
+              <h3>Implementación</h3>
+              <p>Traducimos la estrategia en acciones, prioridades, orden operativo y mecanismos de seguimiento.</p>
+            </div>
+          </article>
+
+          <article class="method-step">
+            <div class="method-num">05</div>
+            <div>
+              <h3>Revisión continua</h3>
+              <p>Ajustamos la estructura según resultados, contexto, riesgo, crecimiento y nuevas decisiones.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="insights">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Insights</div>
+            <h2>Criterio, análisis y marcos de decisión</h2>
+          </div>
+          <p class="lead">
+            Una capa editorial fortalece la percepción de advisory y permite mostrar pensamiento propio,
+            no solo oferta de servicios.
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <article class="card">
+            <span class="insight-tag">Análisis</span>
+            <h3>Cómo detectar fugas invisibles en tu estructura financiera</h3>
+            <p>Una lectura práctica para identificar dónde se pierde claridad, control o capacidad de decisión.</p>
+            <a href="#">Leer artículo →</a>
+          </article>
+
+          <article class="card">
+            <span class="insight-tag">Guía</span>
+            <h3>Tres errores al crecer sin arquitectura de capital</h3>
+            <p>Señales de expansión desordenada y criterios para reordenar recursos antes de escalar.</p>
+            <a href="#">Explorar guía →</a>
+          </article>
+
+          <article class="card">
+            <span class="insight-tag">Marco</span>
+            <h3>Liquidez, protección o expansión: cómo priorizar</h3>
+            <p>Un enfoque para decidir mejor cuando varias necesidades compiten al mismo tiempo.</p>
+            <a href="#">Ver marco →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre-mi">
+      <div class="container about-grid">
+        <div class="quote-box">
+          <div>
+            <div class="eyebrow">Sobre el enfoque</div>
+            <blockquote>
+              “No trabajo desde fórmulas genéricas. Trabajo desde contexto, timing, liquidez,
+              exposición y capacidad real de ejecución.”
+            </blockquote>
+          </div>
+          <p class="small" style="margin-top:20px;">
+            Una práctica boutique para quienes necesitan una lectura más fina de su estructura financiera.
+          </p>
+        </div>
+
+        <div class="about-box">
+          <div class="eyebrow">Firma</div>
+          <h3>Luis T0r</h3>
+          <p>Arquitectura financiera aplicada a flujo, capital y decisiones estratégicas.</p>
+          <p style="margin-top: 16px;">
+            Esta versión proyecta una firma sobria, clara y confiable: menos estética de portafolio,
+            más estructura de advisory.
+          </p>
+          <p style="margin-top: 16px;">
+            Puedes reemplazar este bloque luego con tu biografía, trayectoria y enfoque de trabajo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="container">
+        <div class="cta-panel">
+          <div>
+            <div class="eyebrow">Contacto</div>
+            <h2>Agenda una conversación inicial</h2>
+            <p class="lead">
+              Si necesitas claridad sobre flujo, capital o decisiones financieras, este es el mejor punto de entrada.
+            </p>
+          </div>
+
+          <div style="display:flex; gap:14px; flex-wrap:wrap;">
+            <a href="https://heydrop.me/luist0r" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              Agendar ahora
+            </a>
+            <a href="mailto:contacto@luistor.uk" class="btn btn-secondary">
+              Enviar email
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© 2026 Luis T0r. Arquitectura de flujo, capital y decisiones.</div>
+      <div class="footer-links">
+        <a href="https://instagram.com/luist0r" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://x.com/luist0r" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
