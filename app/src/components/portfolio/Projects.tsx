@@ -2,6 +2,14 @@ import { ExternalLink } from 'lucide-react'
 import { useLanguageStore, translations } from "@/store/language"
 import { motion } from "framer-motion"
 
+// Import images to ensure Vite processes them correctly
+import plus_plan from "@/assets/projects/plus_plan.png"
+import gt_intel from "@/assets/projects/gt_intel.png"
+import mision_argentina from "@/assets/projects/mision_argentina.png"
+import fuds_organic from "@/assets/projects/fuds_organic.png"
+import gpt_fusion from "@/assets/projects/gpt_fusion.png"
+import leadership from "@/assets/projects/leadership.png"
+
 export const PortfolioProjects = () => {
   const { language } = useLanguageStore();
   const t = translations[language].projects;
@@ -11,7 +19,7 @@ export const PortfolioProjects = () => {
       title: "Plus Plan",
       tag: t.items.plus_plan.tag,
       desc: t.items.plus_plan.desc,
-      image: "/projects/plus_plan.png",
+      image: plus_plan,
       color: "bg-[#F9FF00]",
       link: "https://plusplan.app/"
     },
@@ -19,7 +27,7 @@ export const PortfolioProjects = () => {
       title: "GT-INTEL",
       tag: t.items.gt_intel.tag,
       desc: t.items.gt_intel.desc,
-      image: "/projects/gt_intel.png",
+      image: gt_intel,
       color: "bg-black",
       text: "text-white",
       link: "#"
@@ -28,7 +36,7 @@ export const PortfolioProjects = () => {
       title: "Misión Argentina",
       tag: t.items.mision_arg.tag,
       desc: t.items.mision_arg.desc,
-      image: "/projects/mision_argentina.png",
+      image: mision_argentina,
       color: "bg-[#F9FF00]",
       link: "https://plusplan.app/mision-argentina/"
     },
@@ -36,7 +44,7 @@ export const PortfolioProjects = () => {
       title: "Fuds Organic",
       tag: t.items.fuds.tag,
       desc: t.items.fuds.desc,
-      image: "/projects/fuds_organic.png",
+      image: fuds_organic,
       color: "bg-[#FF0004]",
       text: "text-white",
       link: "https://www.instagram.com/fudesol?igsh=MTI5MTNxZGZsd3l1ZA=="
@@ -45,7 +53,7 @@ export const PortfolioProjects = () => {
       title: "GPT Fusion Portfolio",
       tag: t.items.gpt.tag,
       desc: t.items.gpt.desc,
-      image: "/projects/gpt_fusion.png",
+      image: gpt_fusion,
       color: "bg-white",
       link: "#"
     },
@@ -53,7 +61,7 @@ export const PortfolioProjects = () => {
       title: "Global Strategy",
       tag: t.items.global.tag,
       desc: t.items.global.desc,
-      image: "/projects/leadership.png",
+      image: leadership,
       color: "bg-black",
       text: "text-white",
       link: "#"
