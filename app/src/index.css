@@ -60,88 +60,22 @@
 }
 
 @layer components {
+  .btn-brutal {
+    @apply font-oswald uppercase tracking-wider border-[3px] border-black px-6 py-3 font-semibold transition-all cursor-pointer active:scale-95;
+  }
+  .btn-brutal-yellow {
+    @apply bg-[#F9FF00] text-black hover:bg-white;
+  }
+  .btn-brutal-red {
+    @apply bg-[#FF0004] text-white hover:bg-white hover:text-black;
+  }
+  .btn-brutal-black {
+    @apply bg-black text-white hover:bg-white hover:text-black;
+  }
   .border-brutal {
     border: 3px solid var(--color-black);
   }
   .border-brutal-thin {
     border: 1px solid var(--color-black);
-  }
-  .bg-yellow {
-    background-color: var(--color-yellow);
-  }
-  .bg-red {
-    background-color: var(--color-red);
-  }
-  .bg-black-brutal {
-    background-color: var(--color-black);
-  }
-  .text-yellow {
-    color: var(--color-yellow);
-  }
-  .text-red {
-    color: var(--color-red);
-  }
-  .hover-yellow:hover {
-    background-color: var(--color-yellow);
-  }
-  .btn-brutal {
-    font-family: "Oswald", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    border: 3px solid var(--color-black);
-    padding: 12px 24px;
-    font-weight: 600;
-    transition: all 0.15s ease;
-    cursor: pointer;
-  }
-  .btn-brutal:hover {
-    background: var(--color-white);
-    border-color: var(--color-black);
-  }
-  .btn-brutal-yellow {
-    background: var(--color-yellow);
-    color: var(--color-black);
-  }
-  .btn-brutal-red {
-    background: var(--color-red);
-    color: var(--color-white);
-  }
-  .btn-brutal-black {
-    background: var(--color-black);
-    color: var(--color-white);
-  }
-  .input-brutal {
-    border: 3px solid var(--color-black);
-    padding: 12px 16px;
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-    background: var(--color-white);
-    outline: none;
-    transition: border-color 0.15s ease;
-    width: 100%;
-  }
-  .input-brutal:focus {
-    border-color: var(--color-red);
-  }
-  .grid-brutal {
-    display: grid;
-    gap: 0;
-  }
-  .cell-brutal {
-    border: 3px solid var(--color-black);
-    margin: -1.5px;
-    position: relative;
-  }
-}
-
-@layer utilities {
-  .font-oswald {
-    font-family: "Oswald", sans-serif;
-  }
-  .font-inter {
-    font-family: "Inter", sans-serif;
-  }
-  .tracking-tight-oswald {
-    letter-spacing: -0.02em;
   }
 }

@@ -1,31 +1,29 @@
 import { Navigation } from "@/components/Navigation";
-import { Hero } from "@/sections/Hero";
-import { Portfolio } from "@/sections/Portfolio";
-import { Process } from "@/sections/Process";
-import { Roster } from "@/sections/Roster";
-import { InquiryForm } from "@/sections/InquiryForm";
+import { PortfolioHero } from "@/components/portfolio/Hero";
+import { PortfolioExperience } from "@/components/portfolio/Experience";
+import { PortfolioProcess } from "@/components/portfolio/Process";
+import { PortfolioProjects } from "@/components/portfolio/Projects";
+import { PortfolioContact } from "@/components/portfolio/Contact";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      <Hero />
-      <Portfolio />
-      <Process />
-      <Roster />
-      <InquiryForm />
+      <PortfolioHero />
+      <PortfolioExperience />
+      <PortfolioProcess />
+      <PortfolioProjects />
+      <PortfolioContact />
 
       {/* Footer */}
       <footer className="border-t-[3px] border-black bg-[#1a1a1a] text-white">
         <div className="grid grid-cols-1 md:grid-cols-12">
           <div className="md:col-span-4 border-r-[3px] border-white/10 px-6 md:px-10 py-10">
             <h3 className="font-oswald text-2xl font-bold uppercase tracking-tight mb-4">
-              EDITORIAL COMMISSION DESK
+              LUIS TORRES
             </h3>
             <p className="font-inter text-xs text-white/60 leading-relaxed max-w-sm">
-              Connecting visionary publishers and brands with the world's most
-              talented independent illustrators. Based in New York, working
-              globally.
+              Strategic Operations Leader specialized in executing complex visions and implementing high-impact development models.
             </p>
           </div>
           <div className="md:col-span-3 border-r-[3px] border-white/10 px-6 md:px-10 py-10">
@@ -33,7 +31,7 @@ export default function Home() {
               Navigate
             </h4>
             <div className="space-y-2">
-              {["Work", "Process", "Roster", "Inquiry", "Dashboard"].map(
+              {["Work", "Experience", "Process", "Contact", "Dashboard"].map(
                 (item) => (
                   <a
                     key={item}
@@ -50,52 +48,29 @@ export default function Home() {
               )}
             </div>
           </div>
-          <div className="md:col-span-3 border-r-[3px] border-white/10 px-6 md:px-10 py-10">
-            <h4 className="font-oswald text-xs font-bold uppercase tracking-[0.2em] text-[#F9FF00] mb-4">
-              Services
-            </h4>
-            <div className="space-y-2">
-              {[
-                "Editorial Illustration",
-                "Brand Identity",
-                "Publishing",
-                "Packaging Design",
-                "Motion Graphics",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="block font-inter text-sm text-white/70"
+          <div className="md:col-span-5 px-6 md:px-10 py-10">
+            <div className="flex flex-col h-full justify-between">
+              <div>
+                <h4 className="font-oswald text-xs font-bold uppercase tracking-[0.2em] text-[#F9FF00] mb-4">
+                  Let's Talk
+                </h4>
+                <a
+                  href="mailto:mail@luistor.uk"
+                  className="font-oswald text-2xl md:text-3xl font-bold hover:text-[#F9FF00] transition-colors"
                 >
-                  {item}
+                  MAIL@LUISTOR.UK
+                </a>
+              </div>
+              <div className="mt-8 pt-8 border-t border-white/10 flex justify-between items-center">
+                <span className="font-inter text-[10px] uppercase tracking-widest text-white/40">
+                  © 2024 Luis Torres Portfolio
                 </span>
-              ))}
+                <span className="font-inter text-[10px] uppercase tracking-widest text-white/40">
+                  Guatemala / Global
+                </span>
+              </div>
             </div>
           </div>
-          <div className="md:col-span-2 px-6 md:px-10 py-10">
-            <h4 className="font-oswald text-xs font-bold uppercase tracking-[0.2em] text-[#F9FF00] mb-4">
-              Social
-            </h4>
-            <div className="space-y-2">
-              {["Instagram", "Behance", "Dribbble", "LinkedIn"].map(
-                (item) => (
-                  <span
-                    key={item}
-                    className="block font-inter text-sm text-white/70 hover:text-[#F9FF00] transition-colors cursor-pointer"
-                  >
-                    {item}
-                  </span>
-                )
-              )}
-            </div>
-          </div>
-        </div>
-        <div className="border-t border-white/10 px-6 md:px-10 py-4 flex flex-col md:flex-row items-center justify-between gap-2">
-          <span className="font-inter text-[10px] text-white/40">
-            &copy; 2026 EDITORIAL COMMISSION DESK. ALL RIGHTS RESERVED.
-          </span>
-          <span className="font-inter text-[10px] text-white/40">
-            DESIGNED IN NEW YORK
-          </span>
         </div>
       </footer>
     </div>

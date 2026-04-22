@@ -10,7 +10,9 @@ export function Navigation() {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -21,37 +23,40 @@ export function Navigation() {
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
     setMenuOpen(false);
   };
 
   const navItems = [
-    { label: "WORK", action: () => scrollToSection("portfolio") },
+    { label: "INTRO", action: () => scrollToSection("hero") },
+    { label: "EXPERIENCE", action: () => scrollToSection("experience") },
+    { label: "PROJECTS", action: () => scrollToSection("projects") },
     { label: "PROCESS", action: () => scrollToSection("process") },
-    { label: "ROSTER", action: () => scrollToSection("roster") },
-    { label: "INQUIRY", action: () => scrollToSection("inquiry") },
+    { label: "CONTACT", action: () => scrollToSection("contact") },
   ];
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+        scrolled || menuOpen
           ? "bg-white border-b-[3px] border-black"
-          : "bg-transparent"
+          : "bg-white/80 backdrop-blur-sm md:bg-transparent"
       }`}
     >
       <div className="w-full">
         {/* Desktop Nav */}
         <div className="hidden md:grid grid-cols-12">
-          <div className="col-span-3 border-r-[3px] border-black px-6 py-4 flex items-center">
+          <div className="col-span-3 border-r-[3px] border-black px-6 py-4 flex items-center bg-white">
             <Link
               to="/"
-              className="font-oswald text-xl font-bold tracking-tight-oswald uppercase"
+              className="font-oswald text-xl font-bold tracking-tight uppercase"
             >
-              EDITORIAL COMMISSION DESK
+              LUIS<span className="text-[#FF0004]">TORRES</span>
             </Link>
           </div>
-          <div className="col-span-6 flex">
+          <div className="col-span-6 flex bg-white/90">
             {navItems.map((item, i) => (
               <button
                 key={i}
@@ -62,7 +67,7 @@ export function Navigation() {
               </button>
             ))}
           </div>
-          <div className="col-span-3 flex items-center justify-end px-6 gap-3">
+          <div className="col-span-3 flex items-center justify-end px-6 gap-3 bg-white">
             {isAuthenticated ? (
               <>
                 <Link
@@ -90,46 +95,53 @@ export function Navigation() {
         </div>
 
         {/* Mobile Nav */}
-        <div className="md:hidden flex items-center justify-between px-4 py-3">
+        <div className="md:hidden flex items-center justify-between px-4 py-3 bg-white">
           <Link
             to="/"
-            className="font-oswald text-lg font-bold tracking-tight-oswald uppercase"
+            className="font-oswald text-lg font-bold tracking-tight uppercase"
           >
-            ECD
+            LUIS<span className="text-[#FF0004]">TORRES</span>
           </Link>
-          <button onClick={() => setMenuOpen(!menuOpen)} className="p-2">
+          <button 
+            onClick={() => setMenuOpen(!menuOpen)} 
+            className="p-2 border-[3px] border-black bg-[#F9FF00]"
+          >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
+        {/* Mobile Menu Content */}
         {menuOpen && (
-          <div className="md:hidden bg-white border-t-[3px] border-black">
+          <div className="md:hidden bg-white border-t-[3px] border-black flex flex-col p-6 gap-4 font-oswald text-xl uppercase font-bold">
             {navItems.map((item, i) => (
               <button
                 key={i}
                 onClick={item.action}
-                className="w-full text-left px-6 py-4 border-b-[3px] border-black font-oswald text-lg font-semibold uppercase hover:bg-[#F9FF00] transition-colors"
+                className="text-left hover:text-[#FF0004] transition-colors"
               >
                 {item.label}
               </button>
             ))}
-            <div className="px-6 py-4">
+            <div className="pt-4 border-t border-black/10 flex flex-col gap-4">
               {isAuthenticated ? (
-                <div className="flex flex-col gap-3">
+                <>
                   <Link
                     to="/dashboard"
-                    className="font-oswald text-lg font-semibold uppercase"
+                    className="font-oswald text-lg font-bold uppercase hover:text-[#FF0004]"
                   >
-                    DASHBOARD
+                    {user?.name || "DASHBOARD"}
                   </Link>
-                  <button onClick={logout} className="btn-brutal btn-brutal-black text-sm py-3">
+                  <button
+                    onClick={logout}
+                    className="btn-brutal btn-brutal-black w-full"
+                  >
                     LOG OUT
                   </button>
-                </div>
+                </>
               ) : (
                 <a
                   href="/api/oauth/authorize"
-                  className="btn-brutal btn-brutal-yellow text-sm py-3 block text-center"
+                  className="btn-brutal btn-brutal-yellow w-full text-center"
                 >
                   LOG IN
                 </a>
