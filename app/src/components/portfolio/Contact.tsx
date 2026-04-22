@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Instagram, ArrowRight } from 'lucide-react'
+import { Mail, ArrowRight } from 'lucide-react'
 import { useLanguageStore, translations } from "@/store/language"
 import { motion } from "framer-motion"
 
@@ -41,14 +41,6 @@ export const PortfolioContact = () => {
                   </div>
                   mail@luistor.uk
                 </a>
-                <div className="flex gap-4">
-                  <a href="https://www.linkedin.com/in/luis-torres-93113524/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 border-[3px] border-black flex items-center justify-center hover:bg-[#0077B5] hover:text-white transition-all">
-                    <Linkedin size={32} />
-                  </a>
-                  <a href="https://www.instagram.com/fudesol?igsh=MTI5MTNxZGZsd3l1ZA==" target="_blank" rel="noopener noreferrer" className="w-16 h-16 border-[3px] border-black flex items-center justify-center hover:bg-[#E4405F] hover:text-white transition-all">
-                    <Instagram size={32} />
-                  </a>
-                </div>
               </div>
             </div>
           </motion.div>
