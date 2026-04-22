@@ -19,11 +19,11 @@ export const PortfolioContact = () => {
             </p>
             
             <div className="space-y-6">
-              <a href="mailto:ls@luistor.com" className="flex items-center gap-4 text-2xl font-black font-oswald hover:text-[#FF0004] transition-colors group">
+              <a href="mailto:mail@luistor.uk" className="flex items-center gap-4 text-2xl font-black font-oswald hover:text-[#FF0004] transition-colors group">
                 <div className="w-12 h-12 border-[3px] border-black flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
                   <Mail />
                 </div>
-                ls@luistor.com
+                mail@luistor.uk
               </a>
               <div className="flex gap-4">
                 <a href="https://www.linkedin.com/in/luis-torres-93113524/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 border-[3px] border-black flex items-center justify-center hover:bg-[#0077B5] hover:text-white transition-all">

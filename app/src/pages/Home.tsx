@@ -65,10 +65,10 @@ export default function Home() {
                   {t.footer.talk}
                 </h4>
                 <a
-                  href="mailto:ls@luistor.com"
+                  href="mailto:mail@luistor.uk"
                   className="font-oswald text-2xl md:text-3xl font-bold hover:text-[#F9FF00] transition-colors"
                 >
-                  LS@LUISTOR.COM
+                  MAIL@LUISTOR.UK
                 </a>
               </div>
               <div className="mt-8 pt-8 border-t border-white/10 flex justify-between items-center">

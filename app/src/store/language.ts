@@ -139,7 +139,7 @@ export const translations = {
       desc: "Strategic Operations Leader specialized in executing complex visions and implementing high-impact development models.",
       navigate: "NAVIGATE",
       talk: "LET'S TALK",
-      rights: "© 2024 Luis Torres Portfolio",
+      rights: "© 2025 Luis Torres Portfolio",
       location: "Guatemala / Global"
     },
     chat: {

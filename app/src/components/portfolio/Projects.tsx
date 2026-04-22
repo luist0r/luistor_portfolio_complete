@@ -11,7 +11,7 @@ export const PortfolioProjects = () => {
       title: "Plus Plan",
       tag: t.items.plus_plan.tag,
       desc: t.items.plus_plan.desc,
-      image: "/projects/plus_plan.png",
+      image: "projects/plus_plan.png",
       color: "bg-[#F9FF00]",
       link: "https://plusplan.app/"
     },
@@ -19,7 +19,7 @@ export const PortfolioProjects = () => {
       title: "GT-INTEL",
       tag: t.items.gt_intel.tag,
       desc: t.items.gt_intel.desc,
-      image: "/projects/gt_intel.png",
+      image: "projects/gt_intel.png",
       color: "bg-black",
       text: "text-white",
       link: "#"
@@ -28,7 +28,7 @@ export const PortfolioProjects = () => {
       title: "Misión Argentina",
       tag: t.items.mision_arg.tag,
       desc: t.items.mision_arg.desc,
-      image: "/projects/mision_argentina.png",
+      image: "projects/mision_argentina.png",
       color: "bg-[#F9FF00]",
       link: "https://plusplan.app/mision-argentina/"
     },
@@ -36,7 +36,7 @@ export const PortfolioProjects = () => {
       title: "Fuds Organic",
       tag: t.items.fuds.tag,
       desc: t.items.fuds.desc,
-      image: "/projects/fuds_organic.png",
+      image: "projects/fuds_organic.png",
       color: "bg-[#FF0004]",
       text: "text-white",
       link: "https://www.instagram.com/fudesol?igsh=MTI5MTNxZGZsd3l1ZA=="
@@ -45,7 +45,7 @@ export const PortfolioProjects = () => {
       title: "GPT Fusion Portfolio",
       tag: t.items.gpt.tag,
       desc: t.items.gpt.desc,
-      image: "/projects/gpt_fusion.png",
+      image: "projects/gpt_fusion.png",
       color: "bg-white",
       link: "#"
     },
@@ -53,7 +53,7 @@ export const PortfolioProjects = () => {
       title: "Global Strategy",
       tag: t.items.global.tag,
       desc: t.items.global.desc,
-      image: "/projects/leadership.png",
+      image: "projects/leadership.png",
       color: "bg-black",
       text: "text-white",
       link: "#"
@@ -89,7 +89,8 @@ export const PortfolioProjects = () => {
                 <img 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
+                  loading="lazy"
                 />
                 <div className="absolute top-4 left-4 bg-black text-white font-oswald px-3 py-1 text-sm font-bold">
                   {project.tag}
