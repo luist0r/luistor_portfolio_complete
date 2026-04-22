@@ -1,4 +1,3 @@
-import React from 'react';
 import { useLanguageStore, translations } from "@/store/language"
 import { motion } from "framer-motion"
 
