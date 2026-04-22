@@ -1,73 +1,90 @@
 import { ExternalLink } from 'lucide-react'
-
-const projects = [
-  {
-    title: "Plus Plan",
-    tag: "DRONE TECH & ANALYSIS",
-    desc: "Land-analysis solution combining drone technology with high-precision 3D models and image-processing algorithms.",
-    image: "/projects/plus_plan.png",
-    color: "bg-[#F9FF00]",
-    link: "https://plusplan.app/"
-  },
-  {
-    title: "GT-INTEL",
-    tag: "TERRITORIAL INTELLIGENCE",
-    desc: "Strategic intelligence dashboard for monitoring national security, infrastructure risk, and territorial dynamics.",
-    image: "/projects/gt_intel.png",
-    color: "bg-black",
-    text: "text-white",
-    link: "#"
-  },
-  {
-    title: "Misión Argentina",
-    tag: "URBAN LAB & TECH HUB",
-    desc: "Exploration of the Argentinian tech ecosystem, focusing on smart cities, urban laboratories, and the scaling of LatAm tech unicorns.",
-    image: "/projects/mision_argentina.png",
-    color: "bg-[#F9FF00]",
-    link: "https://plusplan.app/mision-argentina/"
-  },
-  {
-    title: "Fuds Organic",
-    tag: "SUSTAINABLE AGRI",
-    desc: "Leading-edge organic agricultural practices implementation across multiple regions, increasing production by 50%.",
-    image: "/projects/fuds_organic.png",
-    color: "bg-[#FF0004]",
-    text: "text-white",
-    link: "https://www.instagram.com/fudesol?igsh=MTI5MTNxZGZsd3l1ZA=="
-  },
-  {
-    title: "GPT Fusion Portfolio",
-    tag: "AI INVESTMENT SYSTEM",
-    desc: "Monthly AI-driven asset selection model using macro-economic analysis and institutional flows to outperform benchmarks.",
-    image: "/projects/gpt_fusion.png",
-    color: "bg-white",
-    link: "#"
-  },
-  {
-    title: "Global Strategy",
-    tag: "LEADERSHIP & VISION",
-    desc: "Strategic advisory and operational leadership for multi-stakeholder initiatives and high-impact economic models.",
-    image: "/projects/leadership.png",
-    color: "bg-black",
-    text: "text-white",
-    link: "#"
-  }
-]
+import { useLanguageStore, translations } from "@/store/language"
+import { motion } from "framer-motion"
 
 export const PortfolioProjects = () => {
+  const { language } = useLanguageStore();
+  const t = translations[language].projects;
+
+  const projects = [
+    {
+      title: "Plus Plan",
+      tag: t.items.plus_plan.tag,
+      desc: t.items.plus_plan.desc,
+      image: "/projects/plus_plan.png",
+      color: "bg-[#F9FF00]",
+      link: "https://plusplan.app/"
+    },
+    {
+      title: "GT-INTEL",
+      tag: t.items.gt_intel.tag,
+      desc: t.items.gt_intel.desc,
+      image: "/projects/gt_intel.png",
+      color: "bg-black",
+      text: "text-white",
+      link: "#"
+    },
+    {
+      title: "Misión Argentina",
+      tag: t.items.mision_arg.tag,
+      desc: t.items.mision_arg.desc,
+      image: "/projects/mision_argentina.png",
+      color: "bg-[#F9FF00]",
+      link: "https://plusplan.app/mision-argentina/"
+    },
+    {
+      title: "Fuds Organic",
+      tag: t.items.fuds.tag,
+      desc: t.items.fuds.desc,
+      image: "/projects/fuds_organic.png",
+      color: "bg-[#FF0004]",
+      text: "text-white",
+      link: "https://www.instagram.com/fudesol?igsh=MTI5MTNxZGZsd3l1ZA=="
+    },
+    {
+      title: "GPT Fusion Portfolio",
+      tag: t.items.gpt.tag,
+      desc: t.items.gpt.desc,
+      image: "/projects/gpt_fusion.png",
+      color: "bg-white",
+      link: "#"
+    },
+    {
+      title: "Global Strategy",
+      tag: t.items.global.tag,
+      desc: t.items.global.desc,
+      image: "/projects/leadership.png",
+      color: "bg-black",
+      text: "text-white",
+      link: "#"
+    }
+  ]
+
   return (
     <section id="projects" className="py-24 px-6 md:px-12 bg-black text-white">
       <div className="container mx-auto">
-        <div className="mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
           <h2 className="text-5xl md:text-7xl font-black mb-4 inline-block bg-[#F9FF00] text-black px-4 py-2 font-oswald uppercase">
-            STRATEGIC PROJECTS
+            {t.title}
           </h2>
-          <p className="font-inter text-xl mt-4 font-bold text-white opacity-80 uppercase tracking-widest">Innovation // Execution // Impact</p>
-        </div>
+          <p className="font-inter text-xl mt-4 font-bold text-white opacity-80 uppercase tracking-widest">{t.subtitle}</p>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 gap-0 border-[3px] border-white">
           {projects.map((project, idx) => (
-            <div key={idx} className={`group border-[3px] border-white -m-[1.5px] overflow-hidden flex flex-col ${project.color} ${project.text || 'text-black'}`}>
+            <motion.div 
+              key={idx} 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className={`group border-[3px] border-white -m-[1.5px] overflow-hidden flex flex-col ${project.color} ${project.text || 'text-black'}`}
+            >
               <div className="relative h-[300px] overflow-hidden border-b-[3px] border-white">
                 <img 
                   src={project.image} 
@@ -89,10 +106,10 @@ export const PortfolioProjects = () => {
                   rel="noopener noreferrer"
                   className={`btn-brutal inline-flex items-center gap-2 ${project.color === 'bg-black' ? 'bg-white text-black' : 'bg-black text-white'}`}
                 >
-                  Case Study <ExternalLink size={18} />
+                  {t.case_study} <ExternalLink size={18} />
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

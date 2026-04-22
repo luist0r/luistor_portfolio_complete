@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { trpc } from "@/providers/trpc";
 import { useAuth } from "@/hooks/useAuth";
+import { useLanguageStore, translations } from "@/store/language";
 import {
   MessageCircle,
   X,
@@ -14,6 +15,8 @@ export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
   const { isAuthenticated, user } = useAuth();
+  const { language } = useLanguageStore();
+  const t = translations[language].chat;
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const utils = trpc.useUtils();
 
@@ -59,7 +62,7 @@ export function ChatWidget() {
             <div className="flex items-center gap-2">
               <Shield size={16} className="text-[#F9FF00]" />
               <span className="font-oswald text-sm font-bold uppercase tracking-wider">
-                Studio Support
+                {t.support}
               </span>
             </div>
             <div className="flex items-center gap-1">
@@ -87,19 +90,19 @@ export function ChatWidget() {
                   className="mx-auto mb-3 text-[#1a1a1a]/20"
                 />
                 <p className="font-inter text-sm text-[#1a1a1a]/60 mb-4">
-                  Log in to chat with our studio team
+                  {t.login_prompt}
                 </p>
                 <a
                   href="/api/oauth/authorize"
                   className="btn-brutal btn-brutal-yellow text-xs py-2 px-4"
                 >
-                  LOG IN
+                  {t.login}
                 </a>
               </div>
             ) : isLoading ? (
               <div className="text-center py-8">
                 <span className="font-oswald text-xs uppercase tracking-widest text-[#1a1a1a]/40">
-                  Loading messages...
+                  {t.loading}
                 </span>
               </div>
             ) : messages && messages.length > 0 ? (
@@ -151,10 +154,10 @@ export function ChatWidget() {
                   className="mx-auto mb-3 text-[#1a1a1a]/20"
                 />
                 <p className="font-inter text-sm text-[#1a1a1a]/60">
-                  No messages yet.
+                  {t.no_messages}
                 </p>
                 <p className="font-inter text-xs text-[#1a1a1a]/40 mt-1">
-                  Ask us anything about commissions!
+                  {t.ask_anything}
                 </p>
               </div>
             )}
@@ -170,7 +173,7 @@ export function ChatWidget() {
               <input
                 type="text"
                 className="flex-1 border-[3px] border-black px-3 py-2 font-inter text-xs outline-none focus:border-[#FF0004] transition-colors"
-                placeholder="Type your message..."
+                placeholder={t.placeholder}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               />

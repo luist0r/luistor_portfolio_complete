@@ -94,12 +94,12 @@ export function Navigation() {
                 </button>
               </>
             ) : (
-              <a
-                href="/api/oauth/authorize"
-                className="btn-brutal btn-brutal-yellow text-xs py-2 px-4"
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="btn-brutal btn-brutal-yellow text-xs py-2 px-4 font-bold uppercase"
               >
-                {t.login}
-              </a>
+                {t.contact}
+              </button>
             )}
           </div>
         </div>
@@ -155,12 +155,12 @@ export function Navigation() {
                   </button>
                 </div>
               ) : (
-                <a
-                  href="/api/oauth/authorize"
-                  className="btn-brutal btn-brutal-black w-full py-4 text-xl block text-center"
+                <button
+                  onClick={() => scrollToSection("contact")}
+                  className="btn-brutal btn-brutal-black w-full py-4 text-xl block text-center uppercase font-black"
                 >
-                  {t.login}
-                </a>
+                  {t.contact}
+                </button>
               )}
             </div>
           </div>
