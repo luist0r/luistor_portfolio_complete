@@ -48,9 +48,10 @@ export const PortfolioExperience = () => {
     <section id="experience" className="py-24 px-6 md:px-12 bg-white">
       <div className="container mx-auto">
         <motion.div 
-          initial={{ opacity: 0, x: -20 }}
+          initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
           className="mb-16"
         >
           <h2 className="text-5xl md:text-7xl font-black mb-4 inline-block bg-black text-white px-4 py-2 font-oswald uppercase">
@@ -63,6 +64,7 @@ export const PortfolioExperience = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
           className="border-[3px] border-black overflow-x-auto"
         >
           <table className="w-full text-left border-collapse">
@@ -99,9 +101,10 @@ export const PortfolioExperience = () => {
 
         <div className="grid md:grid-cols-2 mt-12 gap-8">
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="border-[3px] border-black p-8 bg-white"
           >
             <h3 className="text-3xl font-black mb-4 font-oswald uppercase">{t.education}</h3>
@@ -113,9 +116,10 @@ export const PortfolioExperience = () => {
             </ul>
           </motion.div>
           <motion.div 
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="border-[3px] border-black p-8 bg-[#FF0004] text-white"
           >
             <h3 className="text-3xl font-black mb-4 font-oswald uppercase">{t.competencies}</h3>

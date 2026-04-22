@@ -37,7 +37,7 @@ export function Navigation() {
     { label: t.experience, action: () => scrollToSection("experience") },
     { label: t.projects, action: () => scrollToSection("projects") },
     { label: t.process, action: () => scrollToSection("process") },
-    { label: t.contact, action: () => scrollToSection("contact") },
+    { label: t.contact, action: () => window.open("https://heydrop.me/luist0r", "_blank") },
   ];
 
   return (
@@ -94,12 +94,14 @@ export function Navigation() {
                 </button>
               </>
             ) : (
-              <button
-                onClick={() => scrollToSection("contact")}
+              <a
+                href="https://heydrop.me/luist0r"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-brutal btn-brutal-yellow text-xs py-2 px-4 font-bold uppercase"
               >
                 {t.contact}
-              </button>
+              </a>
             )}
           </div>
         </div>

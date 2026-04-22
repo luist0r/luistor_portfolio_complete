@@ -39,7 +39,7 @@ export default function Home() {
                 { label: t.nav.projects, id: "projects" },
                 { label: t.nav.experience, id: "experience" },
                 { label: t.nav.process, id: "process" },
-                { label: t.nav.contact, id: "contact" },
+                { label: t.nav.contact, id: "contact", isExternal: true },
                 { label: t.nav.dashboard, id: "dashboard" }
               ].map(
                 (item) => (
@@ -48,8 +48,12 @@ export default function Home() {
                     href={
                       item.id === "dashboard"
                         ? "/dashboard"
-                        : `#${item.id}`
+                        : item.isExternal 
+                          ? "https://heydrop.me/luist0r"
+                          : `#${item.id}`
                     }
+                    target={item.isExternal ? "_blank" : undefined}
+                    rel={item.isExternal ? "noopener noreferrer" : undefined}
                     className="block font-inter text-sm text-white/70 hover:text-[#F9FF00] transition-colors"
                   >
                     {item.label}
@@ -65,10 +69,12 @@ export default function Home() {
                   {t.footer.talk}
                 </h4>
                 <a
-                  href="mailto:mail@luistor.uk"
+                  href="https://heydrop.me/luist0r"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="font-oswald text-2xl md:text-3xl font-bold hover:text-[#F9FF00] transition-colors"
                 >
-                  MAIL@LUISTOR.UK
+                  HEYDROP.ME/LUIST0R
                 </a>
               </div>
               <div className="mt-8 pt-8 border-t border-white/10 flex justify-between items-center">
