@@ -1,25 +1,29 @@
 import { ArrowRight } from 'lucide-react'
+import { useLanguageStore, translations } from "@/store/language"
 
 export const PortfolioHero = () => {
+  const { language } = useLanguageStore();
+  const t = translations[language].hero;
+
   return (
-    <section id="hero" className="min-h-[90vh] flex flex-col justify-center px-6 md:px-12 bg-white">
+    <section id="hero" className="min-h-[90vh] flex flex-col justify-center px-6 md:px-12 bg-white pt-24 md:pt-12">
       <div className="container mx-auto">
         <div className="grid lg:grid-cols-12 gap-0 border-[3px] border-black bg-black">
           <div className="lg:col-span-7 p-8 md:p-16 bg-white border-b-[3px] lg:border-b-0 lg:border-r-[3px] border-black">
             <h1 className="text-6xl md:text-8xl lg:text-[110px] font-black mb-8 leading-[0.9] tracking-tighter font-oswald uppercase">
-              DRIVING <br />
-              <span className="text-[#FF0004]">SCALABLE</span><br />
-              <span className="bg-[#F9FF00] px-2 inline-block mt-2">IMPACT</span>
+              {t.driving} <br />
+              <span className="text-[#FF0004]">{t.scalable}</span><br />
+              <span className="bg-[#F9FF00] px-2 inline-block mt-2">{t.impact}</span>
             </h1>
             <p className="font-inter text-xl md:text-2xl mb-12 max-w-2xl text-black font-bold leading-tight">
-              Strategic Operations Leader specialized in executing complex visions and implementing high-impact development models.
+              {t.desc}
             </p>
             <div className="flex flex-wrap gap-4">
               <a href="#projects" className="btn-brutal btn-brutal-yellow flex items-center gap-2 text-lg">
-                View Projects <ArrowRight size={20} />
+                {t.view_projects} <ArrowRight size={20} />
               </a>
               <a href="#contact" className="btn-brutal btn-brutal-black flex items-center gap-2 text-lg">
-                Get in Touch
+                {t.get_in_touch}
               </a>
             </div>
           </div>
@@ -45,12 +49,12 @@ export const PortfolioHero = () => {
             {/* Impact Text Overlay */}
             <div className="relative z-20 h-full flex flex-col items-center justify-center p-12 text-center select-none">
               <div className="bg-[#FF0004] text-white border-[3px] border-black p-6 rotate-3 hover:rotate-0 transition-transform duration-300">
-                <h3 className="text-4xl font-black mb-2 uppercase font-oswald">Vision</h3>
-                <p className="font-inter font-bold uppercase tracking-widest text-sm">Strategic Execution</p>
+                <h3 className="text-4xl font-black mb-2 uppercase font-oswald">{t.vision}</h3>
+                <p className="font-inter font-bold uppercase tracking-widest text-sm">{t.vision_desc}</p>
               </div>
               <div className="bg-black text-white border-[3px] border-black p-8 -rotate-3 hover:rotate-0 transition-transform duration-300 mt-4">
-                <h3 className="text-5xl font-black mb-2 uppercase font-oswald">Luis</h3>
-                <p className="font-inter font-bold uppercase tracking-widest text-sm">Urban Intelligence</p>
+                <h3 className="text-5xl font-black mb-2 uppercase font-oswald">{t.urban}</h3>
+                <p className="font-inter font-bold uppercase tracking-widest text-sm">{t.urban_desc}</p>
               </div>
             </div>
           </div>
