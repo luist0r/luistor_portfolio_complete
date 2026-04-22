@@ -15,10 +15,10 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@contracts/*": ["./contracts/*"],
-      "@db/*": ["./db/*"]
+      "@/*": ["./app/src/*"],
+      "@contracts/*": ["./app/contracts/*"],
+      "@db/*": ["./app/db/*"]
     }
   },
-  "include": ["api", "contracts", "db"]
+  "include": ["app/api", "app/contracts", "app/db"]
 }

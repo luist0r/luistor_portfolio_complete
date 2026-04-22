@@ -17,13 +17,13 @@
     "baseUrl": ".",
     "paths": {
       "@/*": [
-        "./src/*"
+        "./app/src/*"
       ],
       "@contracts/*": [
-        "./contracts/*"
+        "./app/contracts/*"
       ],
       "@db/*": [
-        "./db/*"
+        "./app/db/*"
       ]
     },
     "moduleResolution": "bundler",
@@ -40,6 +40,6 @@
     "noUncheckedSideEffectImports": true
   },
   "include": [
-    "src"
+    "app/src"
   ]
 }
