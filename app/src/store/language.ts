@@ -63,7 +63,7 @@ export const translations = {
       descriptions: {
         manager: "Designed and implemented local economic development and sustainable agriculture programs, improving productivity and climate resilience for 700+ direct beneficiaries.",
         founder: "Led the Jalapa Hub during a critical growth phase, scaling local impact projects and strengthening the community of young leaders.",
-        impact: "Dedicated thousands of hours to community development, altruistic initiatives, and social welfare projects across Guatemala, focusing on education and economic empowerment.",
+        impact: "Executed large-scale community development and social welfare projects across Guatemala, focusing on measurable operational efficiency in education and economic empowerment.",
         organic: "Built and led a team introducing organic agricultural practices across Jalapa, Jutiapa, and Santa Rosa.",
         advisor: "Designed and implemented political communication and positioning strategies at the regional level, increasing voter intention by 35%."
       },
@@ -194,7 +194,7 @@ export const translations = {
       descriptions: {
         manager: "Diseñó e implementó programas de desarrollo económico local y agricultura sostenible, mejorando la productividad y resiliencia climática para más de 700 beneficiarios directos.",
         founder: "Lideró el Hub de Jalapa durante una fase crítica de crecimiento, escalando proyectos de impacto local y fortaleciendo la comunidad de jóvenes líderes.",
-        impact: "Dedicó miles de horas al desarrollo comunitario, iniciativas altruistas y proyectos de bienestar social en toda Guatemala, centrándose en la educación y el empoderamiento económico.",
+        impact: "Ejecutó proyectos de bienestar social y desarrollo comunitario a gran escala en toda Guatemala, con un enfoque en la eficiencia operativa medible para el empoderamiento económico.",
         organic: "Construyó y lideró un equipo introduciendo prácticas agrícolas orgánicas en Jalapa, Jutiapa y Santa Rosa.",
         advisor: "Diseñó e implementó estrategias regionales de comunicación y posicionamiento político, incrementando la intención de voto en un 35%."
       },
