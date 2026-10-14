@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<style>
+  @font-face { font-family: "Oswald"; font-weight: 700; src: url("../node_modules/@fontsource/oswald/files/oswald-latin-700-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Oswald"; font-weight: 600; src: url("../node_modules/@fontsource/oswald/files/oswald-latin-600-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Inter"; font-weight: 600; src: url("../node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2") format("woff2"); }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: #1a1a1a; }
+
+  .card {
+    width: 1200px; height: 630px;
+    border: 10px solid #1a1a1a;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    grid-template-rows: minmax(0, 1fr) 80px;
+    background: #fff;
+  }
+  .main {
+    padding: 34px 52px 30px;
+    border-right: 6px solid #1a1a1a;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .tag {
+    align-self: flex-start;
+    background: #1a1a1a; color: #fff;
+    font: 600 22px/1 "Oswald", sans-serif;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 9px 14px; margin-bottom: 18px;
+  }
+  .name {
+    font: 700 128px/0.88 "Oswald", sans-serif;
+    text-transform: uppercase; letter-spacing: -0.035em;
+    color: #1a1a1a;
+  }
+  .name span { color: #FF0004; }
+  .role {
+    align-self: flex-start;
+    margin-top: 24px;
+    background: #F9FF00;
+    white-space: nowrap;
+    border: 5px solid #1a1a1a;
+    padding: 8px 16px 10px;
+    font: 700 var(--role-size, 42px)/1 "Oswald", sans-serif;
+    text-transform: uppercase; letter-spacing: -0.01em;
+    color: #1a1a1a;
+  }
+  .areas {
+    margin-top: 18px;
+    font: 600 23px/1.35 "Inter", sans-serif;
+    color: #1a1a1a;
+  }
+
+  .side {
+    position: relative;
+    background: #F9FF00;
+    overflow: hidden;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,0,0,.16) 2px, transparent 2px),
+      linear-gradient(90deg, rgba(0,0,0,.16) 2px, transparent 2px);
+    background-size: 60px 60px;
+  }
+  .block {
+    position: relative;
+    border: 5px solid #1a1a1a;
+    color: #fff; text-align: center; text-transform: uppercase;
+    padding: 18px 26px;
+  }
+  .block b { display: block; font: 700 52px/1 "Oswald", sans-serif; }
+  .block small { display: block; margin-top: 8px; font: 600 15px/1.2 "Inter", sans-serif; letter-spacing: 0.14em; }
+  .red { background: #FF0004; transform: rotate(3deg); }
+  .black { background: #1a1a1a; transform: rotate(-3deg); }
+
+  .bar {
+    grid-column: 1 / -1;
+    background: #1a1a1a; color: #F9FF00;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 52px;
+    font: 700 34px/1 "Oswald", sans-serif; letter-spacing: 0.02em; text-transform: uppercase;
+  }
+  .bar span:last-child { color: #fff; font-size: 24px; letter-spacing: 0.16em; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="main">
+      <div class="tag" data-i18n="tag"></div>
+      <div class="name">Luis<br /><span>Torres</span></div>
+      <div class="role" data-i18n="role"></div>
+      <div class="areas" data-i18n="areas"></div>
+    </div>
+    <div class="side">
+      <div class="grid"></div>
+      <div class="block red"><b data-i18n="b1"></b><small data-i18n="s1"></small></div>
+      <div class="block black"><b data-i18n="b2"></b><small data-i18n="s2"></small></div>
+    </div>
+    <div class="bar"><span>luistor.uk</span><span>Guatemala / Global</span></div>
+  </div>
+  <script>
+    const copy = {
+      en: {
+        tag: "Portfolio",
+        role: "Strategic Operations Leader",
+        areas: "Economic development · Territorial intelligence ·<br>High-impact project execution",
+        b1: "Vision", s1: "Strategic execution",
+        b2: "Impact", s2: "Scalable models",
+      },
+      es: {
+        tag: "Portafolio",
+        role: "Líder de Operaciones Estratégicas",
+        areas: "Desarrollo económico · Inteligencia territorial ·<br>Ejecución de proyectos de alto impacto",
+        b1: "Visión", s1: "Ejecución estratégica",
+        b2: "Impacto", s2: "Modelos escalables",
+      },
+    };
+    const lang = new URLSearchParams(location.search).get("lang") === "es" ? "es" : "en";
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      el.innerHTML = copy[lang][el.dataset.i18n];
+    });
+    // Shrink the role line until it fits the column.
+    document.fonts.ready.then(() => {
+      const role = document.querySelector(".role");
+      const max = document.querySelector(".main").clientWidth - 104;
+      for (let size = 42; role.offsetWidth > max && size > 28; size--) {
+        role.style.setProperty("--role-size", `${size}px`);
+      }
+    });
+  </script>
+</body>
+</html>
