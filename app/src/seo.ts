@@ -42,7 +42,12 @@ function structuredData(lang: Language) {
           "Negotiation",
           "Partnerships",
         ],
-        sameAs: ["https://heydrop.me/luist0r"],
+        sameAs: [
+          "https://www.linkedin.com/in/luist0r",
+          "https://www.instagram.com/luist0r/",
+          "https://www.tiktok.com/@luist0r",
+          "https://heydrop.me/luist0r",
+        ],
       },
       {
         "@type": "WebSite",
