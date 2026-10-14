@@ -1,7 +1,8 @@
 import { languagePath, translations, type Language } from "@/store/language";
 
 export const SITE_URL = "https://luistor.uk";
-export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+export const ogImage = (lang: Language) =>
+  `${SITE_URL}/${lang === "es" ? "luis-torres-es.jpg" : "luis-torres-en.jpg"}`;
 export const LANGUAGES: Language[] = ["en", "es"];
 
 export const pageUrl = (lang: Language) => `${SITE_URL}${languagePath(lang)}`;
@@ -23,7 +24,7 @@ function structuredData(lang: Language) {
         "@id": `${SITE_URL}/#person`,
         name: "Luis Torres",
         url: pageUrl(lang),
-        image: OG_IMAGE,
+        image: ogImage(lang),
         jobTitle: seo.jobTitle,
         description: seo.description,
         email: "mailto:mail@luistor.uk",
@@ -87,16 +88,16 @@ export function renderHead(lang: Language) {
       (l) =>
         `<meta property="og:locale:alternate" content="${translations[l].seo.locale}" />`
     ),
-    `<meta property="og:image" content="${OG_IMAGE}" />`,
+    `<meta property="og:image" content="${ogImage(lang)}" />`,
     `<meta property="og:image:width" content="1200" />`,
     `<meta property="og:image:height" content="630" />`,
-    `<meta property="og:image:alt" content="Luis Torres" />`,
+    `<meta property="og:image:alt" content="Luis Torres — ${escapeHtml(seo.jobTitle)}" />`,
     `<meta property="profile:first_name" content="Luis" />`,
     `<meta property="profile:last_name" content="Torres" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${title}" />`,
     `<meta name="twitter:description" content="${description}" />`,
-    `<meta name="twitter:image" content="${OG_IMAGE}" />`,
+    `<meta name="twitter:image" content="${ogImage(lang)}" />`,
     `<script type="application/ld+json">${JSON.stringify(
       structuredData(lang)
     ).replace(/</g, "\\u003c")}</script>`,
@@ -121,4 +122,6 @@ export function applyHead(lang: Language) {
   set('meta[property="og:title"]', "content", seo.title);
   set('meta[property="og:description"]', "content", seo.description);
   set('meta[property="og:locale"]', "content", seo.locale);
+  set('meta[property="og:image"]', "content", ogImage(lang));
+  set('meta[name="twitter:image"]', "content", ogImage(lang));
 }
