@@ -1,8 +1,8 @@
-import { useLanguageStore, translations } from "@/store/language"
+import { useLanguage, translations } from "@/store/language"
 import { motion } from "framer-motion"
 
 export const PortfolioProcess = () => {
-  const { language } = useLanguageStore();
+  const { language } = useLanguage();
   const t = translations[language].process;
 
   return (

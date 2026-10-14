@@ -1,9 +1,9 @@
 import React from 'react'
-import { useLanguageStore, translations } from "@/store/language"
+import { useLanguage, translations } from "@/store/language"
 import { motion } from "framer-motion"
 
 export const PortfolioExperience = () => {
-  const { language } = useLanguageStore();
+  const { language } = useLanguage();
   const t = translations[language].experience;
 
   const experiences = [

@@ -1,23 +1,31 @@
+import { useEffect } from "react";
 import { Navigation } from "@/components/Navigation";
 import { PortfolioHero } from "@/components/portfolio/Hero";
 import { PortfolioExperience } from "@/components/portfolio/Experience";
 import { PortfolioProcess } from "@/components/portfolio/Process";
 import { PortfolioProjects } from "@/components/portfolio/Projects";
 import { PortfolioContact } from "@/components/portfolio/Contact";
-import { useLanguageStore, translations } from "@/store/language";
+import { useLanguage, translations } from "@/store/language";
+import { applyHead } from "@/seo";
 
 export default function Home() {
-  const { language } = useLanguageStore();
+  const { language } = useLanguage();
   const t = translations[language];
+
+  useEffect(() => {
+    applyHead(language);
+  }, [language]);
 
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      <PortfolioHero />
-      <PortfolioExperience />
-      <PortfolioProcess />
-      <PortfolioProjects />
-      <PortfolioContact />
+      <main>
+        <PortfolioHero />
+        <PortfolioExperience />
+        <PortfolioProcess />
+        <PortfolioProjects />
+        <PortfolioContact />
+      </main>
 
       {/* Footer */}
       <footer className="border-t-[3px] border-black bg-[#1a1a1a] text-white">
@@ -40,17 +48,14 @@ export default function Home() {
                 { label: t.nav.experience, id: "experience" },
                 { label: t.nav.process, id: "process" },
                 { label: t.nav.contact, id: "contact", isExternal: true },
-                { label: t.nav.dashboard, id: "dashboard" }
               ].map(
                 (item) => (
                   <a
                     key={item.id}
                     href={
-                      item.id === "dashboard"
-                        ? "/dashboard"
-                        : item.isExternal 
-                          ? "https://heydrop.me/luist0r"
-                          : `#${item.id}`
+                      item.isExternal
+                        ? "https://heydrop.me/luist0r"
+                        : `#${item.id}`
                     }
                     target={item.isExternal ? "_blank" : undefined}
                     rel={item.isExternal ? "noopener noreferrer" : undefined}
@@ -79,7 +84,7 @@ export default function Home() {
               </div>
               <div className="mt-8 pt-8 border-t border-white/10 flex justify-between items-center">
                 <span className="font-inter text-[10px] uppercase tracking-widest text-white/40">
-                  {t.footer.rights}
+                  © {new Date().getFullYear()} {t.footer.rights}
                 </span>
                 <span className="font-inter text-[10px] uppercase tracking-widest text-white/40">
                   {t.footer.location}

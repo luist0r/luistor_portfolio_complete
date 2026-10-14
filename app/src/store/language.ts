@@ -1,36 +1,50 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { useLocation, useNavigate } from "react-router";
 
-type Language = 'en' | 'es';
+export type Language = "en" | "es";
 
-interface LanguageState {
-  language: Language;
-  setLanguage: (lang: Language) => void;
+export const LANGUAGE_PREFERENCE_KEY = "language-preference";
+
+export const languagePath = (lang: Language) => (lang === "es" ? "/es/" : "/");
+
+export const languageFromPath = (pathname: string): Language =>
+  /^\/es(\/|$)/.test(pathname) ? "es" : "en";
+
+export function saveLanguagePreference(lang: Language) {
+  try {
+    localStorage.setItem(LANGUAGE_PREFERENCE_KEY, lang);
+  } catch {
+    // Storage can be unavailable (private mode); the URL still carries the language.
+  }
 }
 
-export const useLanguageStore = create<LanguageState>()(
-  persist(
-    (set) => ({
-      language: 'en',
-      setLanguage: (lang) => set({ language: lang }),
-    }),
-    {
-      name: 'language-storage',
-    }
-  )
-);
+// The language lives in the URL (/ = English, /es/ = Spanish) so each version
+// can be indexed separately and linked with hreflang.
+export function useLanguage() {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const setLanguage = (lang: Language) => {
+    saveLanguagePreference(lang);
+    navigate(languagePath(lang));
+  };
+
+  return { language: languageFromPath(pathname), setLanguage };
+}
 
 export const translations = {
   en: {
+    seo: {
+      title: "Luis Torres | Strategic Operations Leader in Guatemala",
+      description: "Luis Torres, strategic operations leader in Guatemala: economic development, territorial intelligence and execution of high-impact projects.",
+      jobTitle: "Strategic Operations Leader",
+      locale: "en_US",
+    },
     nav: {
       intro: "INTRO",
       experience: "EXPERIENCE",
       projects: "PROJECTS",
       process: "PROCESS",
-      contact: "CONTACT",
-      login: "LOG IN",
-      logout: "LOG OUT",
-      dashboard: "DASHBOARD"
+      contact: "CONTACT"
     },
     hero: {
       driving: "DRIVING",
@@ -96,6 +110,7 @@ export const translations = {
       title: "STRATEGIC PROJECTS",
       subtitle: "Innovation // Execution // Impact",
       case_study: "Case Study",
+      no_link: "Private project",
       items: {
         plus_plan: {
           tag: "DRONE TECH & ANALYSIS",
@@ -128,10 +143,6 @@ export const translations = {
       title_accent: "CONNECT",
       subtitle: "STRATEGIC PARTNERSHIPS, TECH VENTURES, OR SYSTEMIC SOLUTIONS.",
       form: {
-        name: "NAME",
-        email: "EMAIL",
-        message: "MESSAGE",
-        message_placeholder: "HOW CAN WE COLLABORATE?",
         send: "SEND MESSAGE"
       }
     },
@@ -139,29 +150,23 @@ export const translations = {
       desc: "Strategic Operations Leader specialized in executing complex visions and implementing high-impact development models.",
       navigate: "NAVIGATE",
       talk: "LET'S TALK",
-      rights: "© 2025 Luis Torres Portfolio",
+      rights: "Luis Torres Portfolio",
       location: "Guatemala / Global"
-    },
-    chat: {
-      support: "STUDIO SUPPORT",
-      login_prompt: "Log in to chat with our studio team",
-      loading: "Loading messages...",
-      no_messages: "No messages yet.",
-      ask_anything: "Ask us anything about commissions!",
-      placeholder: "Type your message...",
-      login: "LOG IN"
     }
   },
   es: {
+    seo: {
+      title: "Luis Torres | Líder de Operaciones Estratégicas en Guatemala",
+      description: "Luis Torres, líder de operaciones estratégicas en Guatemala: desarrollo económico, inteligencia territorial y ejecución de proyectos de alto impacto.",
+      jobTitle: "Líder de Operaciones Estratégicas",
+      locale: "es_GT",
+    },
     nav: {
       intro: "INICIO",
       experience: "EXPERIENCIA",
       projects: "PROYECTOS",
       process: "PROCESO",
-      contact: "CONTACTO",
-      login: "INICIAR SESIÓN",
-      logout: "CERRAR SESIÓN",
-      dashboard: "PANEL"
+      contact: "CONTACTO"
     },
     hero: {
       driving: "IMPULSANDO",
@@ -227,6 +232,7 @@ export const translations = {
       title: "PROYECTOS ESTRATÉGICOS",
       subtitle: "Innovación // Ejecución // Impacto",
       case_study: "Caso de Estudio",
+      no_link: "Proyecto privado",
       items: {
         plus_plan: {
           tag: "TECNOLOGÍA DE DRONES Y ANÁLISIS",
@@ -259,10 +265,6 @@ export const translations = {
       title_accent: "CONECTAR",
       subtitle: "ALIANZAS ESTRATÉGICAS, EMPRENDIMIENTOS TECNOLÓGICOS O SOLUCIONES SISTÉMICAS.",
       form: {
-        name: "NOMBRE",
-        email: "CORREO",
-        message: "MENSAJE",
-        message_placeholder: "¿CÓMO PODEMOS COLABORAR?",
         send: "ENVIAR MENSAJE"
       }
     },
@@ -270,17 +272,8 @@ export const translations = {
       desc: "Líder de Operaciones Estratégicas especializado en ejecutar visiones complejas e implementar modelos de desarrollo de alto impacto.",
       navigate: "NAVEGAR",
       talk: "HABLEMOS",
-      rights: "© 2024 Portafolio de Luis Torres",
+      rights: "Portafolio de Luis Torres",
       location: "Guatemala / Global"
-    },
-    chat: {
-      support: "SOPORTE DEL ESTUDIO",
-      login_prompt: "Inicia sesión para chatear con nuestro equipo",
-      loading: "Cargando mensajes...",
-      no_messages: "No hay mensajes aún.",
-      ask_anything: "¡Pregúntanos cualquier cosa sobre comisiones!",
-      placeholder: "Escribe tu mensaje...",
-      login: "INICIAR SESIÓN"
     }
   }
 };

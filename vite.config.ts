@@ -1,34 +1,23 @@
 import path from "path"
-const __dirname = import.meta.dirname
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 
+const __dirname = import.meta.dirname
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react()
-  ],
+  plugins: [react()],
   server: {
     port: 3000,
   },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./app/src"),
-      "@contracts": path.resolve(__dirname, "./app/contracts"),
-      "@db": path.resolve(__dirname, "./app/db"),
-      "db": path.resolve(__dirname, "./app/db"),
-      "contracts": path.resolve(__dirname, "./app/contracts"),
     },
   },
-  envDir: path.resolve(__dirname),
   publicDir: path.resolve(__dirname, "app/public"),
   build: {
     outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true,
-    rollupOptions: {
-      input: {
-        main: path.resolve(__dirname, 'index.html'),
-      }
-    }
   },
 });

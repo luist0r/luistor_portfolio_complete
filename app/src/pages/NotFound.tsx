@@ -19,7 +19,7 @@ export default function NotFound() {
           className="btn-brutal btn-brutal-yellow inline-flex items-center gap-2"
         >
           <ArrowLeft size={16} />
-          BACK TO STUDIO
+          BACK HOME
         </Link>
 
         {/* Decorative */}

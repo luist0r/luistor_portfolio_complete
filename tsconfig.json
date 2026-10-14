@@ -6,23 +6,6 @@
     },
     {
       "path": "./tsconfig.node.json"
-    },
-    {
-      "path": "./tsconfig.server.json"
     }
-  ],
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./app/src/*"
-      ],
-      "@contracts/*": [
-        "./app/contracts/*"
-      ],
-      "@db/*": [
-        "./app/db/*"
-      ]
-    }
-  }
+  ]
 }
