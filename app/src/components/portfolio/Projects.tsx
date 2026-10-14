@@ -1,20 +1,28 @@
 import { ExternalLink } from 'lucide-react'
-import { useLanguageStore, translations } from "@/store/language"
+import { useLanguage, translations } from "@/store/language"
 import { motion } from "framer-motion"
 
 // Import images to ensure Vite processes them correctly
-import plus_plan from "@/assets/projects/plus_plan.png"
-import gt_intel from "@/assets/projects/gt_intel.png"
-import mision_argentina from "@/assets/projects/mision_argentina.png"
-import fuds_organic from "@/assets/projects/fuds_organic.png"
-import gpt_fusion from "@/assets/projects/gpt_fusion.png"
-import leadership from "@/assets/projects/leadership.png"
+import plus_plan from "@/assets/projects/plus_plan.webp"
+import gt_intel from "@/assets/projects/gt_intel.webp"
+import mision_argentina from "@/assets/projects/mision_argentina.webp"
+import fuds_organic from "@/assets/projects/fuds_organic.webp"
+import gpt_fusion from "@/assets/projects/gpt_fusion.webp"
+import leadership from "@/assets/projects/leadership.webp"
 
 export const PortfolioProjects = () => {
-  const { language } = useLanguageStore();
+  const { language } = useLanguage();
   const t = translations[language].projects;
 
-  const projects = [
+  const projects: {
+    title: string
+    tag: string
+    desc: string
+    image: string
+    color: string
+    text?: string
+    link?: string
+  }[] = [
     {
       title: "Plus Plan",
       tag: t.items.plus_plan.tag,
@@ -30,7 +38,6 @@ export const PortfolioProjects = () => {
       image: gt_intel,
       color: "bg-black",
       text: "text-white",
-      link: "#"
     },
     {
       title: "Misión Argentina",
@@ -47,7 +54,7 @@ export const PortfolioProjects = () => {
       image: fuds_organic,
       color: "bg-[#FF0004]",
       text: "text-white",
-      link: "https://www.instagram.com/fudesol?igsh=MTI5MTNxZGZsd3l1ZA=="
+      link: "https://www.instagram.com/fudesol/"
     },
     {
       title: "GPT Fusion Portfolio",
@@ -55,7 +62,6 @@ export const PortfolioProjects = () => {
       desc: t.items.gpt.desc,
       image: gpt_fusion,
       color: "bg-white",
-      link: "#"
     },
     {
       title: "Global Strategy",
@@ -64,7 +70,6 @@ export const PortfolioProjects = () => {
       image: leadership,
       color: "bg-black",
       text: "text-white",
-      link: "#"
     }
   ]
 
@@ -95,9 +100,12 @@ export const PortfolioProjects = () => {
               className={`group border-[3px] border-white -m-[1.5px] overflow-hidden flex flex-col ${project.color} ${project.text || 'text-black'}`}
             >
               <div className="relative h-[300px] overflow-hidden border-b-[3px] border-white">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
+                <img
+                  src={project.image}
+                  alt={`${project.title} — ${project.tag}`}
+                  width={800}
+                  height={800}
+                  decoding="async"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
                   loading="lazy"
                 />
@@ -110,14 +118,20 @@ export const PortfolioProjects = () => {
                 <p className="font-inter text-lg mb-8 opacity-90 font-medium">
                   {project.desc}
                 </p>
-                <a 
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`btn-brutal inline-flex items-center gap-2 ${project.color === 'bg-black' ? 'bg-white text-black' : 'bg-black text-white'}`}
-                >
-                  {t.case_study} <ExternalLink size={18} />
-                </a>
+                {project.link ? (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`btn-brutal inline-flex items-center gap-2 ${project.color === 'bg-black' ? 'bg-white text-black' : 'bg-black text-white'}`}
+                  >
+                    {t.case_study} <ExternalLink size={18} aria-hidden="true" />
+                  </a>
+                ) : (
+                  <span className="font-oswald text-sm font-bold uppercase tracking-widest opacity-60">
+                    {t.no_link}
+                  </span>
+                )}
               </div>
             </motion.div>
           ))}

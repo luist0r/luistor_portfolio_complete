@@ -10,20 +10,13 @@
     ],
     "module": "ESNext",
     "types": [
-      "vite/client",
-      "node"
+      "vite/client"
     ],
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "@/*": [
         "./app/src/*"
-      ],
-      "@contracts/*": [
-        "./app/contracts/*"
-      ],
-      "@db/*": [
-        "./app/db/*"
       ]
     },
     "moduleResolution": "bundler",

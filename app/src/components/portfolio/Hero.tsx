@@ -1,9 +1,9 @@
 import { ArrowRight } from 'lucide-react'
-import { useLanguageStore, translations } from "@/store/language"
+import { useLanguage, translations } from "@/store/language"
 import { motion } from "framer-motion"
 
 export const PortfolioHero = () => {
-  const { language } = useLanguageStore();
+  const { language } = useLanguage();
   const t = translations[language].hero;
 
   return (
@@ -17,6 +17,7 @@ export const PortfolioHero = () => {
             className="lg:col-span-7 p-8 md:p-16 bg-white border-b-[3px] lg:border-b-0 lg:border-r-[3px] border-black"
           >
             <h1 className="text-6xl md:text-8xl lg:text-[110px] font-black mb-8 leading-[0.9] tracking-tighter font-oswald uppercase">
+              <span className="sr-only">Luis Torres — </span>
               {t.driving} <br />
               <span className="text-[#FF0004]">{t.scalable}</span><br />
               <span className="bg-[#F9FF00] px-2 inline-block mt-2">{t.impact}</span>
@@ -42,11 +43,13 @@ export const PortfolioHero = () => {
           >
             {/* YouTube Short Embed with Brutalist Filters */}
             <div className="absolute inset-0 z-0 opacity-80 grayscale contrast-125 brightness-75">
-              <iframe 
-                src="https://www.youtube.com/embed/QcB4jF8VLkw?autoplay=1&mute=1&loop=1&playlist=QcB4jF8VLkw&controls=0&modestbranding=1&showinfo=0&rel=0"
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/QcB4jF8VLkw?autoplay=1&mute=1&loop=1&playlist=QcB4jF8VLkw&controls=0&modestbranding=1&rel=0&playsinline=1"
+                title="Luis Torres — background video"
                 className="w-full h-full object-cover scale-[1.5]"
                 allow="autoplay; encrypted-media"
-                frameBorder="0"
+                tabIndex={-1}
+                aria-hidden="true"
               ></iframe>
             </div>
             
