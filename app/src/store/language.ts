@@ -113,12 +113,12 @@ export const translations = {
       no_link: "Private project",
       items: {
         plus_plan: {
-          tag: "DRONE TECH & ANALYSIS",
-          desc: "Land-analysis solution combining drone technology with high-precision 3D models and image-processing algorithms."
+          tag: "STRATEGY, DATA & TECHNOLOGY",
+          desc: "Political and strategic consulting firm in Guatemala for candidates, local governments and companies. It operates GT-INTEL and drone-based territorial analysis."
         },
         gt_intel: {
           tag: "TERRITORIAL INTELLIGENCE",
-          desc: "Strategic intelligence dashboard for monitoring national security, infrastructure risk, and territorial dynamics."
+          desc: "Territorial intelligence platform for Guatemala built on public sources: risk by department, digital conversation and the electoral map, every data point with its source and time. Operated by PlusPlan."
         },
         mision_arg: {
           tag: "URBAN LAB & TECH HUB",
@@ -235,12 +235,12 @@ export const translations = {
       no_link: "Proyecto privado",
       items: {
         plus_plan: {
-          tag: "TECNOLOGÍA DE DRONES Y ANÁLISIS",
-          desc: "Solución de análisis de suelo combinando tecnología de drones con modelos 3D de alta precisión y algoritmos de procesamiento de imágenes."
+          tag: "ESTRATEGIA, DATOS Y TECNOLOGÍA",
+          desc: "Consultora de asesoría política y estratégica en Guatemala para candidatos, gobiernos locales y empresas. Opera GT-INTEL y el análisis territorial con drones."
         },
         gt_intel: {
           tag: "INTELIGENCIA TERRITORIAL",
-          desc: "Panel de inteligencia estratégica para el monitoreo de seguridad nacional, riesgo de infraestructura y dinámica territorial."
+          desc: "Plataforma de inteligencia territorial de Guatemala con fuentes públicas: riesgo por departamento, conversación digital y mapa electoral, cada dato con su fuente y su hora. La opera PlusPlan."
         },
         mision_arg: {
           tag: "LABORATORIO URBANO Y HUB TECNOLÓGICO",

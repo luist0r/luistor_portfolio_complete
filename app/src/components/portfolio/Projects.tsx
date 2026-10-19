@@ -38,6 +38,7 @@ export const PortfolioProjects = () => {
       image: gt_intel,
       color: "bg-black",
       text: "text-white",
+      link: "https://plusplan.app/gt-intel/"
     },
     {
       title: "Misión Argentina",

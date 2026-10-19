@@ -29,7 +29,10 @@ function structuredData(lang: Language) {
         description: seo.description,
         email: "mailto:mail@luistor.uk",
         address: { "@type": "PostalAddress", addressCountry: "GT" },
-        worksFor: { "@type": "Organization", name: "FUDESOL" },
+        worksFor: [
+          { "@type": "Organization", name: "FUDESOL" },
+          { "@type": "Organization", name: "PlusPlan", url: "https://plusplan.app/" },
+        ],
         alumniOf: [
           { "@type": "CollegeOrUniversity", name: "Universidad Rafael Landívar" },
         ],
@@ -39,6 +42,7 @@ function structuredData(lang: Language) {
           "Public Policy",
           "Economic Development",
           "Data Analysis",
+          "Territorial Intelligence",
           "AI Productivity",
           "Negotiation",
           "Partnerships",
